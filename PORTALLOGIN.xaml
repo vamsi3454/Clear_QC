@@ -1,18 +1,20 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="PORTALLOGIN" this:PORTALLOGIN.edit_selector="&lt;webctrl id='editUserName' tag='DIV' /&gt;" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="PORTALLOGIN" this:PORTALLOGIN.edit_selector="&lt;webctrl id='editUserName' tag='DIV' /&gt;" this:PORTALLOGIN.skip="&lt;html app='chrome.exe' title='CLEAR' /&gt;&lt;webctrl aaname='Skip' tag='A' /&gt;" this:PORTALLOGIN.click_skip="&lt;html app='chrome.exe' title='CLEAR' /&gt;&lt;webctrl aaname='Skip' tag='A' /&gt;" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="edit_selector" Type="InArgument(x:String)" />
     <x:Property Name="portal_url" Type="InArgument(x:String)" />
     <x:Property Name="username" Type="InArgument(x:String)" />
     <x:Property Name="password" Type="InArgument(x:String)" />
     <x:Property Name="report_path" Type="InArgument(x:String)" />
+    <x:Property Name="skip" Type="InArgument(x:String)" />
+    <x:Property Name="click_skip" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1240,2074</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1014,2573</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>PORTALLOGIN_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="25">
+    <scg:List x:TypeArguments="x:String" Capacity="27">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -38,10 +40,12 @@
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -70,21 +74,22 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PORTALLOGIN" sap:VirtualizedContainerService.HintSize="1024,2009" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PORTALLOGIN" sap:VirtualizedContainerService.HintSize="1024,2508" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="982,1917" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[portal_url]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="982,2416" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[portal_url]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="948,1816" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence sap:VirtualizedContainerService.HintSize="948,2315" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -92,7 +97,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Delay Duration="00:00:04" sap:VirtualizedContainerService.HintSize="906,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="906,1662" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="906,2161" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -100,9 +105,11 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="868,1434" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence sap:VirtualizedContainerService.HintSize="868,1934" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="edit_text" />
+                    <Variable x:TypeArguments="x:String" Name="skip_text" />
+                    <Variable x:TypeArguments="x:Boolean" Name="isfound" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -110,7 +117,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Edit " sap:VirtualizedContainerService.HintSize="826,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Edit " sap:VirtualizedContainerService.HintSize="826,51" sap2010:WorkflowViewState.IdRef="GetValue_1">
                     <ui:GetValue.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="f3e02144-68a0-4076-a9c4-202e31c1fda9" InformativeScreenshot="ae99a5e9a0d9a373ed4639b1fc5fa59e">
                         <ui:Target.TimeoutMS>
@@ -124,6 +131,12 @@
                     <ui:GetValue.Value>
                       <OutArgument x:TypeArguments="x:String">[edit_text]</OutArgument>
                     </ui:GetValue.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
                   </ui:GetValue>
                   <If Condition="[edit_text.Contains(&quot;edit&quot;)]" sap:VirtualizedContainerService.HintSize="826,1196" sap2010:WorkflowViewState.IdRef="If_1">
                     <sap:WorkflowViewStateService.ViewState>
@@ -196,21 +209,11 @@
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Report.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="addStatus">
-                              <Literal x:TypeArguments="x:String">Pass</Literal>
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="addModules">
-                              <Literal x:TypeArguments="x:String">Login</Literal>
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="addExptedResults">
-                              <Literal x:TypeArguments="x:String">Logged in sucessfully</Literal>
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="Final_ReportPath">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="report_path" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="SheetName">
-                              <Literal x:TypeArguments="x:String">Results</Literal>
-                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="addStatus">Pass</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="addModules">Login</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="addExptedResults">Logged in sucessfully</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="Final_ReportPath">[report_path]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="SheetName">Results</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
@@ -250,30 +253,66 @@
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="363,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Report.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="addStatus">
-                              <Literal x:TypeArguments="x:String">Pass</Literal>
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="addModules">
-                              <Literal x:TypeArguments="x:String">Login</Literal>
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="addExptedResults">
-                              <Literal x:TypeArguments="x:String">Logged in sucessfully</Literal>
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="Final_ReportPath">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="report_path" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="SheetName">
-                              <Literal x:TypeArguments="x:String">Results</Literal>
-                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="addStatus">Pass</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="addModules">Login</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="addExptedResults">Logged in sucessfully</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="Final_ReportPath">[report_path]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="SheetName">Results</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
                     </If.Else>
                   </If>
+                  <ui:UiElementExists DisplayName="Element Exists 'A'" Exists="[isfound]" sap:VirtualizedContainerService.HintSize="826,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8deed62e-abb0-42a5-b182-948dbd5c7709" InformativeScreenshot="235a87955012980ee223ffe4c0f9d54e" Selector="[skip]">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                  <If Condition="[isfound]" sap:VirtualizedContainerService.HintSize="826,369" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,222" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b75a5f32-08ea-45b1-b987-619b0adf3e29" Selector="[click_skip]">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                      </Sequence>
+                    </If.Then>
+                  </If>
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="869,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="872,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
